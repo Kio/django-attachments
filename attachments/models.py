@@ -36,6 +36,7 @@ class Attachment(models.Model):
     attachment_file = models.FileField(_('attachment'), upload_to=attachment_upload)
     created = models.DateTimeField(_('created'), auto_now_add=True)
     modified = models.DateTimeField(_('modified'), auto_now=True)
+    name = models.CharField(max_length=200, verbose_name= _('name'), blank=True)
 
     class Meta:
         ordering = ['-created']
@@ -50,4 +51,4 @@ class Attachment(models.Model):
 
     @property
     def filename(self):
-        return os.path.split(self.attachment_file.name)[1]
+        return self.name if self.name else os.path.split(self.attachment_file.name)[1]
