@@ -48,7 +48,7 @@ def attachment_delete_link(context, attachment):
     return {'delete_url': None}
 
 
-@register.assignment_tag
+@register.simple_tag
 def get_attachments_for(obj, *args, **kwargs):
     """
     Resolves attachments that are attached to a given object. You can specify
